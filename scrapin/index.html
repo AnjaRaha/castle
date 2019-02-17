@@ -36,7 +36,7 @@
                                     <div class="card-body">
                                     <form>
                                         <label class="form-check">
-                                            <button id="compute" type="button" class="btn btn-primary" id="computeBtn"> By Name</button>
+                                            <button type="button" class="btn btn-primary" id="computeBtn" onclick="filteringRestaurantByName()"> By Name</button>
                                         </label>  <!-- form-check.// -->
                                     </form>
                                     </div> <!-- card-body.// -->        
@@ -67,15 +67,16 @@
             }
             getRestaurants();
 
-            const filteringRestaurantByName = ()=>{
-                let nameBtn = $(`#${computeBtn}`);
-                nameBtn.click(()=>{
-                    fetch('/filterByPrice',{method : "get"}).then((response)=>{
+    function filteringRestaurantByName(){
+                /*let nameBtn = $(`#${computeBtn}`);
+                nameBtn.click(()=>
+                    fetch('/filterByName',{method : "get"}).then((response)=>{
                     return response.json();
                 }).then((data)=>{
-                    console.log(data);  
-                });
-             });           
+                    console.log(data);
+                    displayRestaurants(data);
+                });  */
+                document.getElementById("demo").innerHTML = "Hello World";        
             }
             const buildIDS = (relaisChateaux)=>{
                 return{

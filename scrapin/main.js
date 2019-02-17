@@ -35,8 +35,8 @@ app.put('/:id',(req,res)=>{
 })
 
 app.get('/filterByName',(req,res)=>{
-    var mysort = { name:1 };
-    db.getDB().collection(collection).find().sort(mysort).toArray((err,documents)=>{
+    //db.getDB().collection(collection).aggregate([{$match:{"year":2011}},{$project:{"_id":1,"properties.location":1,"housenumber":1}},])
+    db.getDB().collection(collection).aggregate([{$project:{"name":1,"price":1}},{$sort:{"name":1}}]).toArray((err,documents)=>{
         if (err)
         console.log(err);
         else{
