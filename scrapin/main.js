@@ -35,7 +35,6 @@ app.put('/:id',(req,res)=>{
 })
 
 app.get('/filterByName',(req,res)=>{
-    //db.getDB().collection(collection).aggregate([{$match:{"year":2011}},{$project:{"_id":1,"properties.location":1,"housenumber":1}},])
     db.getDB().collection(collection).aggregate([{$project:{"name":1,"price":1}},{$sort:{"name":1}}]).toArray((err,documents)=>{
         if (err)
         console.log(err);
@@ -44,6 +43,18 @@ app.get('/filterByName',(req,res)=>{
             res.json(documents);
         }
     })
+})
+
+app.get('/filterByPrice',(req,res)=>{
+    db.getDB().collection(collection).aggregate([{$project:{"name":1,"price":1}},{$sort:{"price":1}}]).toArray((err,documents)=>{
+        if (err)
+        console.log(err);
+        else{
+            console.log(documents)
+            res.json(documents);
+        }
+    })
+
 })
       
 app.use(bodyParser.json());
